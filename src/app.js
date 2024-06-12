@@ -1,8 +1,10 @@
-import express from "express";
+import express from 'express';
 import cors from "cors";
 import cookieParser from "cookie-parser";
+//routes import
+import userRouter from './routes/user.routes.js';
 
-const app = express()
+const app = express();
 
 app.use(cors({
     origin: process.env.CORS_ORIGINE,
@@ -20,4 +22,12 @@ app.use(express.static("public"))
 
 app.use(cookieParser())
 
-export { app }
+
+
+
+//router declaration
+app.use("/api/v1/users", userRouter)    //ahiya thi /users thi userRouter ms jashe 
+
+//http://localhost:8000/api/v1/users/register
+
+export default app 
