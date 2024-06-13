@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { registerUser, loginUser, logoutUser } from "../controllers/user.controller.js";
+import { registerUser, loginUser, logoutUser, refreshAccesToken } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
@@ -24,4 +24,6 @@ router.route("/login").post(loginUser)
 //secured routes  jya pan middlewarw inject karvu hoi to method ne run thva pela inect karavi devanu
 router.route("/logout").post(verifyJWT, logoutUser)
 
-export default router
+router.route("/refresh-token").post(refreshAccesToken)
+
+export default router    
